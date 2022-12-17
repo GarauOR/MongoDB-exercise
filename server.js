@@ -61,6 +61,8 @@ app.get("/", homeHandler);
 app.get("/product", productsHandler);
 app.get("/product-by-brand", productByBrandHandler);
 app.post("/product", addProductHandler);
+app.delete("/product/:id", deleteProductHandler);
+app.put("/product/:id", updateProductHandler);
 
 
 async function productsHandler (req,res) {
@@ -87,6 +89,23 @@ async function addProductHandler (req,res) {
 
     let dataByBrand = await makeupModel.find({ brand });
     res.status(200).send(dataByBrand);
+}
+
+async function deleteProductHandler (req,res) {
+    const { id } = req.params; 
+    const newProduct = await makeupModel.findByIdAndDelete(id);
+
+    let allProds = await makeupModel.find({});
+    res.status(200).send(allProds);
+}
+
+async function updateProductHandler (req,res) {
+    const { id } = req.params;
+    const { name, brand, price, imageUrl, description } = req.body;
+    const newProduct = await makeupModel.findByIdAndUpdate(id, { name, brand, price, imageUrl, description });
+
+    let allProds = await makeupModel.find({});
+    res.status(200).send(allProds);
 }
 
 app.listen(PORT, ()=>{
