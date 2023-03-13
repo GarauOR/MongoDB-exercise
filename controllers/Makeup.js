@@ -2,6 +2,7 @@
 
 const axios = require("axios");
 const makeupModel = require("../models/Makeup");
+const AllMakeupModel = require("../models/AllMakeup")
 
 function homeHandler(req, res) {
   res.status(200).send("BASE URL");
@@ -68,6 +69,21 @@ async function prodListHandler(req, res) {
   res.status(200).send(prodResAPI.data);
 }
 
+async function addAllMakeupHandler(req, res) {
+  let { makeup } = req.body;
+  await AllMakeupModel.create({
+    makeup
+  });
+
+  let allMakeup = await AllMakeupModel.find();
+  res.status(200).send(allMakeup);
+}
+
+async function allMakeupHandler(req, res) {
+  let allMakeup = await AllMakeupModel.find();
+  res.status(200).send(allMakeup);
+}
+
 module.exports = {
   homeHandler,
   favProdsHandler,
@@ -76,4 +92,6 @@ module.exports = {
   delProdHandler,
   updProdHandler,
   prodListHandler,
+  allMakeupHandler,
+  addAllMakeupHandler,
 };
