@@ -11,5 +11,8 @@ MKRouter.get("/productbybrand", MKHandlers.prodByBrandHandler);
 MKRouter.post("/product", MKHandlers.addProdHandler);
 MKRouter.delete("/product/:id", MKHandlers.delProdHandler);
 MKRouter.put("/product/:id", MKHandlers.updProdHandler);
+MKRouter.post("/stored", MKHandlers.addAllMakeupHandler);
+MKRouter.get("/stored", MKHandlers.allMakeupHandler);
+
 
 module.exports = MKRouter; 
