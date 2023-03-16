@@ -3,9 +3,15 @@
 const mongoose = require("./index");
 
 const allProductSchema = new mongoose.Schema({
-    makeup: Array,
+    name: String,
+    brand: String,
+    price: Number,
+    imageUrl: String,
+    description: String,
+    username: String,
+    type: String,
 });
 
-const AllMakeupModel = mongoose.model("AllMakeups", allProductSchema);
+const allMakeupModel = mongoose.model("AllMakeups", allProductSchema);
 
-module.exports = AllMakeupModel;
+module.exports = allMakeupModel;

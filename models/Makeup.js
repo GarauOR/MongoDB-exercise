@@ -8,7 +8,8 @@ const productSchema = new mongoose.Schema({
     price: Number,
     imageUrl: String,
     description: String,
-    username: String
+    username: String,
+    type: String,
 });
 
 const makeupModel = mongoose.model("lipstick", productSchema);

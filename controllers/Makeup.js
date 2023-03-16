@@ -2,7 +2,7 @@
 
 const axios = require("axios");
 const makeupModel = require("../models/Makeup");
-const AllMakeupModel = require("../models/AllMakeup")
+const allMakeupModel = require("../models/AllMakeup")
 
 function homeHandler(req, res) {
   res.status(200).send("BASE URL");
@@ -33,6 +33,7 @@ async function addProdHandler(req, res) {
     imageUrl,
     description,
     username,
+    type,
   });
 
   let allProds = await makeupModel.find({ username: username });
@@ -56,6 +57,7 @@ async function updProdHandler(req, res) {
     price,
     imageUrl,
     description,
+    type,
   });
 
   let allProds = await makeupModel.find({ username: req.query.username });
@@ -70,17 +72,23 @@ async function prodListHandler(req, res) {
 }
 
 async function addAllMakeupHandler(req, res) {
-  let { makeup } = req.body;
-  await AllMakeupModel.create({
-    makeup
+  let { name, brand, price, imageUrl, description, username } = req.body;
+  await allMakeupModel.create({
+    name,
+    brand,
+    price,
+    imageUrl,
+    description,
+    username,
+    type,
   });
 
-  let allMakeup = await AllMakeupModel.find();
+  let allMakeup = await allMakeupModel.find();
   res.status(200).send(allMakeup);
 }
 
 async function allMakeupHandler(req, res) {
-  let allMakeup = await AllMakeupModel.find();
+  let allMakeup = await allMakeupModel.find();
   res.status(200).send(allMakeup);
 }
 
