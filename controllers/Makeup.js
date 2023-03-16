@@ -25,7 +25,7 @@ async function prodByBrandHandler(req, res) {
 }
 
 async function addProdHandler(req, res) {
-  let { name, brand, price, imageUrl, description, username } = req.body;
+  let { name, brand, price, imageUrl, description, username, type } = req.body;
   await makeupModel.create({
     name,
     brand,
@@ -72,7 +72,7 @@ async function prodListHandler(req, res) {
 }
 
 async function addAllMakeupHandler(req, res) {
-  let { name, brand, price, imageUrl, description, username } = req.body;
+  let { name, brand, price, imageUrl, description, username, type } = req.body;
   await allMakeupModel.create({
     name,
     brand,
