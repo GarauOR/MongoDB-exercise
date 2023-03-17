@@ -77,7 +77,7 @@ async function addAllMakeupHandler(req, res) {
     name,
     brand,
     price,
-    imageUrl,
+    api_featured_image: imageUrl,
     description,
     username,
     type,
