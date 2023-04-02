@@ -9,7 +9,7 @@ const allProductSchema = new mongoose.Schema({
     api_featured_image: String,
     description: String,
     username: String,
-    type: String,
+    product_type: String,
 });
 
 const allMakeupModel = mongoose.model("AllMakeups", allProductSchema);
