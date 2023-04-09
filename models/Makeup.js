@@ -10,6 +10,7 @@ const productSchema = new mongoose.Schema({
     description: String,
     username: String,
     product_type: String,
+    product_link: String,
 });
 
 const makeupModel = mongoose.model("lipstick", productSchema);

@@ -25,7 +25,7 @@ async function prodByBrandHandler(req, res) {
 }
 
 async function addProdHandler(req, res) {
-  let { name, brand, price, api_featured_image, description, username, product_type } = req.body;
+  let { name, brand, price, api_featured_image, description, username, product_type, product_link } = req.body;
   await makeupModel.create({
     name,
     brand,
@@ -34,6 +34,7 @@ async function addProdHandler(req, res) {
     description,
     username,
     product_type,
+    product_link,
   });
 
   let allProds = await makeupModel.find({ username: username });
@@ -50,7 +51,7 @@ async function delProdHandler(req, res) {
 
 async function updProdHandler(req, res) {
   const { id } = req.params;
-  const { name, brand, price, imageUrl, description, product_type } = req.body;
+  const { name, brand, price, imageUrl, description, product_type, product_link } = req.body;
   await makeupModel.findByIdAndUpdate(id, {
     name,
     brand,
@@ -58,6 +59,7 @@ async function updProdHandler(req, res) {
     imageUrl,
     description,
     product_type,
+    product_link
   });
 
   let allProds = await makeupModel.find({ username: req.query.username });
@@ -72,7 +74,7 @@ async function prodListHandler(req, res) {
 }
 
 async function addAllMakeupHandler(req, res) {
-  let { name, brand, price, api_featured_image, description, username, product_type } = req.body;
+  let { name, brand, price, api_featured_image, description, username, product_type, product_link } = req.body;
   await allMakeupModel.create({
     name,
     brand,
@@ -81,6 +83,7 @@ async function addAllMakeupHandler(req, res) {
     description,
     username,
     product_type,
+    product_link
   });
 
   let allMakeup = await allMakeupModel.find();
